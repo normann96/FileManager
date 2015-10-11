@@ -13,8 +13,7 @@ void Info()
 	cout << "4. Open next folder\n";
 	cout << "5. Open previous folder\n";
 	cout << "6. Find file\n";
-	cout << "7. Go to Students\n";
-	cout << "8. Exit\n";
+	cout << "7. Exit\n";
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 }
 
@@ -74,7 +73,7 @@ char * OpenPreviousFolder( char * pCurFolder )
 {
 	int nSizeCurFolder = strlen(pCurFolder);
 
-// находим второй слеш с конца pCurFolder и изменяем размер до второго бслеша с конца
+// Г­Г ГµГ®Г¤ГЁГ¬ ГўГІГ®Г°Г®Г© Г±Г«ГҐГё Г± ГЄГ®Г­Г¶Г  pCurFolder ГЁ ГЁГ§Г¬ГҐГ­ГїГҐГ¬ Г°Г Г§Г¬ГҐГ° Г¤Г® ГўГІГ®Г°Г®ГЈГ® ГЎГ±Г«ГҐГёГ  Г± ГЄГ®Г­Г¶Г 
 
 	for (int i = nSizeCurFolder-2; i > 2; i--)
 	{
@@ -105,7 +104,7 @@ char * OpenDisk( int * nSizeCurFolder )
 	cin >> sDisk;
 
 	pDrive[1] = 0;
-// Имя диска '+' :\\ '+' *.*. Example:  D:\\*.*
+// Г€Г¬Гї Г¤ГЁГ±ГЄГ  '+' :\\ '+' *.*. Example:  D:\\*.*
 	strcpy( pBuffer, pDrive );                
 	strcat( pBuffer, sBackSlesh);
 	strcat( pBuffer, sAllFile );
@@ -161,16 +160,16 @@ void ShowFolders( char * pCurFolder )
 //	strcat(pCurFolder, "\*.*");
 	int nSizeCurFolder = strlen(pCurFolder);
 
-	WIN32_FIND_DATA wf;								// хранит в себе кучу полей, по которым мы будем собирать информацию наших файлов
+	WIN32_FIND_DATA wf;								// ГµГ°Г Г­ГЁГІ Гў Г±ГҐГЎГҐ ГЄГіГ·Гі ГЇГ®Г«ГҐГ©, ГЇГ® ГЄГ®ГІГ®Г°Г»Г¬ Г¬Г» ГЎГіГ¤ГҐГ¬ Г±Г®ГЎГЁГ°Г ГІГј ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ Г­Г ГёГЁГµ ГґГ Г©Г«Г®Гў
 	HANDLE hFile = FindFirstFile(pCurFolder, &wf);
-	if (INVALID_HANDLE_VALUE == hFile)				// неправильное значение описателя
+	if (INVALID_HANDLE_VALUE == hFile)				// Г­ГҐГЇГ°Г ГўГЁГ«ГјГ­Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г®ГЇГЁГ±Г ГІГҐГ«Гї
 	{
 		cout << "Error!\n";
 		_getch();
 		return;
 	}
 
-// Поиск папок в str
+// ГЏГ®ГЁГ±ГЄ ГЇГ ГЇГ®ГЄ Гў str
 	BOOL bOk = TRUE;
 	while(bOk)
 	{
@@ -195,7 +194,7 @@ void ShowFolders( char * pCurFolder )
 		bOk = FindNextFile(hFile, &wf);
 	}
 
-// Поиск файлов в str
+// ГЏГ®ГЁГ±ГЄ ГґГ Г©Г«Г®Гў Гў str
 	hFile = FindFirstFile(pCurFolder, &wf);
 	bOk = TRUE;
 	while(bOk)
